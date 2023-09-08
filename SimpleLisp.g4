@@ -1,0 +1,11 @@
+grammar SimpleLisp;
+prog:	expr EOF ;
+expr:	'(' intExpr ')' ;
+intExpr:	OP WHITESPACE subExpr WHITESPACE subExpr ;
+OP:	'+' | '-' | '*' | '/' ;
+subExpr:	expr | num ;
+num: INT | FLOAT ;
+NEWLINE : [\r\n]+ -> skip;
+INT     : [0-9]+ ;
+FLOAT	: INT '.' INT ;
+WHITESPACE: ' ' ;
